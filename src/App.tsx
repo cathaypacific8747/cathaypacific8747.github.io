@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import useSound from 'use-sound';
+import TitleScreen from "./TitleScreen";
+import PapersScreen from './PapersScreen';
+import './App.scss'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ActionContext = React.createContext<any>({});
+
+const App = () => {
+    const [playButtonSound] = useSound('assets/gui/click.webm');
+    const [page, setPage] = useState('title')
+
+    return <ActionContext.Provider value={{
+        playButtonSound: playButtonSound,
+        setPage: setPage,
+    }}>
+        {
+            page === 'title' ? <TitleScreen /> :
+            page === 'papers' ? <PapersScreen /> : <></>
+        }
+    </ActionContext.Provider>
 }
 
-export default App;
+export { App, ActionContext }
