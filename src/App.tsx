@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useSound from 'use-sound';
 import TitleScreen from "./TitleScreen";
 import PapersScreen from './PapersScreen';
-import './App.scss'
+import './App.scss';
+import { Routes, Route } from "react-router-dom";
 
 const ActionContext = React.createContext<any>({});
 
 const App = () => {
     const [playButtonSound] = useSound('assets/gui/click.webm');
-    const [page, setPage] = useState('title')
 
     return <ActionContext.Provider value={{
         playButtonSound: playButtonSound,
-        setPage: setPage,
     }}>
-        {
-            page === 'title' ? <TitleScreen /> :
-            page === 'papers' ? <PapersScreen /> : <></>
-        }
+        <Routes>
+            <Route path="/papers" element={<PapersScreen />} />
+            <Route path="/" element={<TitleScreen />} />
+        </Routes>
     </ActionContext.Provider>
 }
 

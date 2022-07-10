@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ActionContext } from '../App'
 import './Button.scss'
+import { useNavigate } from 'react-router-dom';
 
 interface ButtonSettings {
     text: string,
@@ -9,10 +10,12 @@ interface ButtonSettings {
 }
 
 const Button: React.FC<ButtonSettings> = ({ text, goto=null, disabled=false }) => {
-    const { playButtonSound, setPage } = useContext(ActionContext)
+    const { playButtonSound } = useContext(ActionContext)
+    let navigate = useNavigate();
+
     const handleClick = () => {
         (!disabled) && playButtonSound();
-        goto && setPage(goto)
+        goto && navigate(goto)
     }
 
     return <div className={`btn${disabled ? ' disabled' : ''}`} onClick={handleClick}>

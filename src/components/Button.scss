@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .btn {
-    @apply bg-slate-400 hover:bg-slate-300 text-white my-1 relative w-[400px] h-10;
+    @apply my-1 relative w-[400px] h-10;
 
 	> .text {
 		@apply absolute top-1/2 left-1/2;
-		transform: translateX(-50%) translateY(-50%) translateY(-2px);
+		transform: translateX(-50%) translateY(-50%) translateY(-1px);
 		text-shadow: 2px 2px #3f3f3f;
 	}
 
@@ -17,6 +17,7 @@
 		> div {
 			@apply w-1/2 h-full;
 			image-rendering: pixelated;
+			background-color: #707070;
 			background-image: url('~/public/assets/gui/btn-enabled.webp');
 			background-size: auto 100%;
 
@@ -46,18 +47,3 @@
 		}
 	}
 }
-
-
-
-
-/* .btn.bg {
-	@apply w-1/2;
-}
-
-.btn.bg.left {
-	@apply bg-red-400;
-}
-
-.btn.bg.right {
-	@apply bg-green-400;
-} */
