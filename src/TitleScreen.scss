@@ -3,6 +3,5 @@
 @tailwind utilities;
 
 div.title-screen {
-    @apply w-full h-full flex flex-col items-center justify-center;
-    background-color: #222;
+    @apply w-full h-full flex flex-col items-center justify-center bg-gray-800;
 }

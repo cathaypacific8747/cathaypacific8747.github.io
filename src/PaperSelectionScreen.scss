@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+div.papers-screen {
+    @apply w-full h-full flex flex-col items-center justify-evenly bg-gray-800;
+}
+
+.selection {
+    @apply w-full flex flex-col items-center justify-start p-1 overflow-y-scroll overflow-x-hidden bg-black bg-opacity-50;
+    height: 72vh; /* 68 */
+}

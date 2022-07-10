@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+div.paper-detail-screen {
+    @apply w-full h-full flex flex-col items-center justify-evenly bg-gray-800;
+    
+    > .header {
+        @apply flex flex-col justify-center text-center;
+        height: 18vh;
+    }
+
+    > .detail {
+        @apply w-full bg-black bg-opacity-50;
+        height: 70vh;
+    }
+
+    > .footer {
+        @apply flex flex-col justify-center;
+        height: 12vh;
+    }
+
+    &.loading > .header {
+        @apply text-gray-500;
+    }
+
+    &.success {
+        > .header {
+            > .title {
+                @apply text-teal-100;
+            }
+
+            > .authors, .published, .doi {
+                @apply text-gray-300 text-[12px];
+            }
+        }
+
+        > .detail {
+            @apply flex flex-row justify-start p-3;
+
+            > .pane-1 {
+                @apply h-full w-9/12 p-3 mr-3;
+
+                > .abstract, >.information {
+                    @apply mb-2;
+                }
+            }
+
+            > .pane-2 {
+                @apply h-full w-3/12 p-3;
+            }
+        }
+    }
+
+    div.link {
+        @apply inline-block underline underline-offset-2;
+
+        > div {
+            @apply inline-block;
+            background: url('~/public/assets/gui/link.webp') no-repeat;
+            background-size: cover;
+            image-rendering: pixelated;
+        }
+
+        &.small > div {
+            @apply w-[11px] h-[11px] ml-1 mr-0.5 opacity-70;
+        }
+
+        &.big > div {
+            @apply w-[16px] h-[16px] ml-2 mr-1;
+        }
+    }
+}
+
+div.heading {
+    @apply mb-2 text-[18px] text-teal-200 border-b-2 border-b-teal-200;
+
+    &.pad {
+        @apply mt-4
+    }
+}

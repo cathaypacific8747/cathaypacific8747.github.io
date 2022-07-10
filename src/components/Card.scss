@@ -9,11 +9,15 @@
         @apply bg-gray-600 w-[64px] h-[64px] flex-shrink-0 relative;
 
         > div {
-            @apply h-full w-full absolute;
+            @apply h-full w-full absolute bg-contain;
+            image-rendering: pixelated;
 
             &.hover {
-                background-size: contain;
-                image-rendering: pixelated;
+                z-index: 101;
+            }
+
+            &.base {
+                z-index: 100;
             }
         }
     }
@@ -22,7 +26,8 @@
         @apply pl-1.5 -translate-y-0.5;
 
         > div {
-            @apply whitespace-nowrap overflow-hidden overflow-ellipsis w-[464px];
+            @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+            width: 464px;
 
             &.subtitle {
                 @apply text-gray-400 -translate-y-0.5;
@@ -43,7 +48,5 @@
     &.selected {
         box-shadow: inset 0 0 0 2px #ccc;
     }
-
-    /* handle small screens */
 }
 

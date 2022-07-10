@@ -1,7 +1,8 @@
 import React from 'react';
 import useSound from 'use-sound';
 import TitleScreen from "./TitleScreen";
-import PapersScreen from './PapersScreen';
+import PaperSelectionScreen from './PaperSelectionScreen';
+import PaperDetailScreen from './PaperDetailScreen';
 import './App.scss';
 import { Routes, Route } from "react-router-dom";
 
@@ -14,7 +15,8 @@ const App = () => {
         playButtonSound: playButtonSound,
     }}>
         <Routes>
-            <Route path="/papers" element={<PapersScreen />} />
+            <Route path="/papers/:paperid" element={<PaperDetailScreen />} />
+            <Route path="/papers" element={<PaperSelectionScreen />} />
             <Route path="/" element={<TitleScreen />} />
         </Routes>
     </ActionContext.Provider>
