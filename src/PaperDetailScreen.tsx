@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import PaperDetail from './paperDetail.d'
+import { PaperDetail } from './paperDetail.d'
 import Button from './components/Button'
 import './PaperDetailScreen.scss'
 

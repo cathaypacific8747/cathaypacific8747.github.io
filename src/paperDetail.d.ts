@@ -19,7 +19,7 @@ interface Downloads {
     others: DownloadItem[];
 }
 
-export default interface PaperDetail {
+interface PaperDetail {
     title: string;
     authors: Author[];
     published: string;
@@ -29,3 +29,5 @@ export default interface PaperDetail {
     information: string;
     downloads: Downloads;
 }
+
+export { PaperDetail };

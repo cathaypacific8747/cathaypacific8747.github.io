@@ -31,7 +31,8 @@ div.paper-detail-screen {
             }
 
             > .authors, .published, .doi {
-                @apply text-gray-300 text-[12px];
+                @apply text-gray-300;
+                font-size: 12px;
             }
         }
 

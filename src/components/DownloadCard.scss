@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+    @apply text-white w-[540px] h-[72px] flex flex-row p-1;
+
+    > .thumb {
+        @apply bg-gray-600 w-[64px] h-[64px] flex-shrink-0 relative;
+
+        > div {
+            @apply h-full w-full absolute bg-contain;
+            image-rendering: pixelated;
+
+            &.hover {
+                z-index: 101;
+            }
+
+            &.base {
+                z-index: 100;
+            }
+        }
+    }
+
+    > .text {
+        @apply pl-1.5 -translate-y-0.5;
+
+        > div {
+            @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
+            width: 464px;
+
+            &.subtitle {
+                @apply text-gray-400 -translate-y-0.5;
+            }
+        }
+    }
+
+    &:hover {
+        > .thumb > .hover {
+            background-image: url('~/public/assets/gui/card_select1.webp');
+        }
+
+        > .thumb:hover > .hover {
+            background-image: url('~/public/assets/gui/card_select2.webp');
+        }
+    }
+
+    &.selected {
+        box-shadow: inset 0 0 0 2px #ccc;
+    }
+}
+
