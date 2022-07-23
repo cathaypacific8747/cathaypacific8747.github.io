@@ -1,0 +1,23 @@
+{
+    "title": "",
+    "authors": [
+        {
+            "name": "Me",
+            "url": "https://orcid.org/0000-0002-9640-6640"
+        }
+    ],
+    "published": "Mmm DD, YYYY",
+    "abstract": "",
+    "information": "",
+    "license": {
+        "name": "CC BY-NC-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    "downloads": [
+        {
+            "display": "",
+            "lastModified": "XX Xxx 20XX XX:XX:XX",
+            "src": "/uploads/papers/_/_"
+        }
+    ]
+}

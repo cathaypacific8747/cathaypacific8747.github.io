@@ -2,28 +2,33 @@
     "title": "An investigation into the traffic congestion in Kwun Tong, Hong Kong.",
     "authors": [
         {
-            "name": "Y.L. CHEUNG",
+            "name": "Me",
             "url": "https://orcid.org/0000-0002-9640-6640"
         }
     ],
     "published": "November 8, 2021",
     "doi": "10.5281/zenodo.6814244",
     "abstract": "Since the industrialisation of Hong Kong, the territory has observed a shortage in parking supply, resulting from the steady increase in car ownership and the declining growth rate in the number of parking spaces. This investigation focuses on providing a more solid understanding of the relationship between the spatial distribution of parking spaces and the local traffic in urban areas of Hong Kong, through on-site surveys and the Ga2SFCA method, so to build a more resilient and sustainable transport system.",
-    "information": "This paper was submitted as the Geography Extended Essay for the May 2022 International Baccalaureate exams.\nCode for the Ga2SFCA algorithm and other related files will be published shortly.\nMarks achieved: 35/35",
+    "information": "This paper was submitted as the Geography Extended Essay for the May 2022 International Baccalaureate exams.\nMarks achieved: 35/35",
     "license": {
         "name": "CC BY-NC-SA 4.0",
         "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
     "downloads": [
         {
-            "display": "Raw PDF",
+            "display": "Final Submission",
             "lastModified": "08 Nov 2021 08:26:36",
             "src": "/uploads/papers/0/GeoEE_raw.pdf"
         },
         {
-            "display": "Compressed PDF",
+            "display": "Compressed Submission",
             "lastModified": "15 Feb 2022 11:26:06",
-            "src": "/uploads/papers/0/GeoEE_raw_compressed.pdf"
+            "src": "/uploads/papers/0/GeoEE_compressed.pdf"
+        },
+        {
+            "display": "RPPF",
+            "lastModified": "21 Jan 2022 17:51",
+            "src": "/uploads/papers/0/GeoEE_RPPF.pdf"
         }
     ]
 }
