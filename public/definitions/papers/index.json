@@ -2,32 +2,32 @@
     {
         "id": "0",
         "title": "An investigation into the traffic congestion in Kwun Tong, Hong Kong.",
-        "description": "Geography EE",
+        "description": "IB Geography EE",
         "thumbPath": "uploads/papers/0/thumb.webp"
     },
     {
         "id": "1",
         "title": "To what extent does Hong Kong fit the pattern of decreasing land values with increasing distance from the Peak Land Value Intersection (PLVI)?",
-        "description": "Geography IA"
+        "description": "IB Geography IA"
     },
     {
         "id": "2",
         "title": "How does the length of the filars in a bifilar pendulum affect its period?",
-        "description": "Physics IA"
+        "description": "IB Physics IA"
     },
     {
         "id": "3",
         "title": "Modelling the volume and surface area of the cabin of an A350-900",
-        "description": "Mathematics IA"
+        "description": "IB Mathematics IA"
     },
     {
         "id": "4",
         "title": "An investigation into the effect of pH of wastewater on the adsorption of copper (II) ions.",
-        "description": "Chemistry IA"
+        "description": "IB Chemistry IA"
     },
     {
         "id": "5",
         "title": "Is there solid justification for regarding knowledge in the natural sciences more highly than another area of knowledge?",
-        "description": "TOK Essay"
+        "description": "IB TOK Essay"
     }
 ]

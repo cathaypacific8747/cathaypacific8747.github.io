@@ -18,8 +18,8 @@ const PaperSelectionScreen = () => {
     }, []);
 
     return <div className="papers-screen">
-        <div>Select Paper</div>
-        <div className="selection" ref={selectionEl} onClick={e => e.target === selectionEl.current && setSelectedPaperId(null)}>
+        <div className="ps-heading">Select Paper</div>
+        <div className="ps-selection" ref={selectionEl} onClick={e => e.target === selectionEl.current && setSelectedPaperId(null)}>
             {papers.map(p => <Card
                 key={p.id}
                 title={p.title}

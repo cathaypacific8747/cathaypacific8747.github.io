@@ -4,6 +4,9 @@
 
 .btn {
     @apply my-1 relative w-[400px] h-10;
+	@media (max-width: 433px) {
+		@apply w-11/12;
+	}
 
 	> .b-text {
 		@apply absolute top-1/2 left-1/2 overflow-hidden whitespace-nowrap;

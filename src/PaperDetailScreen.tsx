@@ -30,8 +30,14 @@ const PaperDetailScreen = () => {
             <Button text="Go Back" goto="/papers" />
         </div>
     </div> : paperDetail === null ? <div className="paper-detail-screen not-found">
-        <div>Hmm... this paper either does not exist or have been removed.</div>
-        <Button text="Go Back" goto="/papers" />
+        <div className="header">
+            <div>404 Not Found</div>
+            <div>This paper either doesn't exist or have been deleted.</div>
+        </div>
+        <div className="detail"></div>
+        <div className="footer">
+            <Button text="Go Back" goto="/papers" />
+        </div>
     </div> : <div className="paper-detail-screen success">
         <div className="header">
             <div className="title">{paperDetail.title}</div>

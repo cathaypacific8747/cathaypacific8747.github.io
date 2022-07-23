@@ -4,6 +4,9 @@
 
 .card {
     @apply text-white w-[540px] h-[72px] flex flex-row p-1;
+    @media (max-width: 585px) {
+        @apply w-11/12;
+    }
 
     > .thumb {
         @apply bg-gray-600 w-[64px] h-[64px] flex-shrink-0 relative;
@@ -22,12 +25,24 @@
         }
     }
 
+    &:hover > .thumb {
+        > .hover {
+            background: url('../assets/card_select.webp');
+            background-size: 200% 100%;
+        }
+
+        &:hover > .hover {
+            background-position: right 0%;
+        }
+    }
+
     > .text {
         @apply pl-1.5 -translate-y-0.5;
+        width: calc(100% - 64px);
 
         > div {
             @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
-            width: 464px;
+            width: 100%;
 
             &.subtitle {
                 @apply text-gray-400 -translate-y-0.5;
@@ -35,18 +50,8 @@
         }
     }
 
-    &:hover {
-        > .thumb > .hover {
-            background-image: url('../assets/card_select1.webp');
-        }
-
-        > .thumb:hover > .hover {
-            background-image: url('../assets/card_select2.webp');
-        }
-    }
-
     &.selected {
-        box-shadow: inset 0 0 0 2px #ccc;
+        box-shadow: inset 0 0 0 2px #aaa;
     }
 }
 

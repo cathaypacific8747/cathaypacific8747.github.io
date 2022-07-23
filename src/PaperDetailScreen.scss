@@ -3,31 +3,38 @@
 @tailwind utilities;
 
 div.paper-detail-screen {
-    @apply w-full h-full flex flex-col items-center justify-evenly bg-gray-800;
+    @apply w-full h-full flex flex-col items-center justify-end bg-gray-800;
     
     > .header {
-        @apply flex flex-col justify-center text-center;
-        height: 18vh;
+        @apply flex flex-col justify-center text-center my-4;
+        min-height: 82px;
     }
 
     > .detail {
         @apply w-full bg-black bg-opacity-50;
-        height: 70vh;
+        height: calc(100% - 16% - 82px - 16px*2);
     }
 
     > .footer {
         @apply flex flex-col justify-center;
-        height: 12vh;
+        height: 16%;
     }
 
+    /* LOADING */
     &.loading > .header {
         @apply text-gray-500;
     }
 
+    /* NOT FOUND */
+    &.not-found > .header {
+        @apply text-red-300;
+    }
+
+    /* SUCCESS */
     &.success {
         > .header {
             > .title {
-                @apply text-teal-100;
+                @apply text-teal-100 mb-1;
             }
 
             > .authors, .published, .doi {
@@ -37,11 +44,13 @@ div.paper-detail-screen {
         }
 
         > .detail {
+            $pane2-width: 340px;
+            $pane-pad: 1.5rem;
             @apply flex flex-row justify-start p-3;
 
             > .pane-1 {
-                @apply h-full p-3 mr-3 overflow-y-scroll;
-                width: calc(100% - 320px - 0.75rem);
+                @apply h-full p-3 overflow-y-auto;
+                width: calc(100% - $pane2-width);
 
                 > .abstract, >.information {
                     @apply mb-2;
@@ -49,8 +58,19 @@ div.paper-detail-screen {
             }
 
             > .pane-2 {
-                @apply h-full p-3 overflow-y-scroll;
-                width: 320px;
+                @apply h-full p-3 overflow-y-auto;
+                width: $pane2-width;
+            }
+
+            @media (max-width: calc(2*$pane2-width + 3*$pane-pad)) {
+                @apply flex-col overflow-y-auto;
+
+                > .pane-1, > .pane-2 {
+                    @apply w-full;
+                    height: unset;
+                    overflow-y: unset;
+                    margin-right: unset;
+                }
             }
         }
     }

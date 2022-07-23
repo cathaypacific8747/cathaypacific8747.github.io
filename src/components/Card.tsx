@@ -22,7 +22,7 @@ const Card: React.FC<CardSettings> = ({ title, subtitle, thumbPath=null, selecte
         navigate(goto)
     }
 
-    return <div className={`card${selected ? ' selected' : ''}`} onClick={dispatchSelected}>
+    return <div className={`card${selected ? ' selected' : ''}`} onClick={dispatchSelected} onDoubleClick={handleNavigate}>
         <div className="thumb" onClick={handleNavigate}>
             <div className="hover"></div>
             <div className="base" style={thumbPath ? {backgroundImage: `url(${thumbPath})`} : {}}></div>
