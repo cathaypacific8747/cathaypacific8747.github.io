@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 const ActionContext = React.createContext<any>({});
 
 const App = () => {
-    const [playButtonSound] = useSound('assets/gui/click.webm');
+    const [playButtonSound] = useSound('/assets/click.webm');
 
     return <ActionContext.Provider value={{
         playButtonSound: playButtonSound,

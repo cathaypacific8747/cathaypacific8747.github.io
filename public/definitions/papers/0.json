@@ -14,19 +14,16 @@
         "name": "CC BY-NC-SA 4.0",
         "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     },
-    "downloads": {
-        "latest": [
-            {
-                "display": "Raw Submission",
-                "lastModified": "08 Nov 2021 08:26:36",
-                "src": "assets/gui/uploads/papers/0/GeoEE_raw.pdf"
-            },
-            {
-                "display": "Raw (Compressed) Submission",
-                "lastModified": "15 Feb 2022 11:26:06",
-                "src": "assets/gui/uploads/papers/0/GeoEE_raw_compressed.pdf"
-            }
-        ],
-        "others": []
-    }
+    "downloads": [
+        {
+            "display": "Raw PDF",
+            "lastModified": "08 Nov 2021 08:26:36",
+            "src": "/uploads/papers/0/GeoEE_raw.pdf"
+        },
+        {
+            "display": "Compressed PDF",
+            "lastModified": "15 Feb 2022 11:26:06",
+            "src": "/uploads/papers/0/GeoEE_raw_compressed.pdf"
+        }
+    ]
 }

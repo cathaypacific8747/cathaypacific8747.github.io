@@ -12,16 +12,16 @@ interface DownloadCardSettings {
 const DownloadCard: React.FC<DownloadCardSettings> = ({ display, lastModified, src }) => {
     const { playButtonSound } = useContext(ActionContext)
 
-    return <div className={`card${selected ? ' selected' : ''}`} onClick={dispatchSelected}>
-        <div className="thumb" onClick={handleNavigate}>
-            <div className="hover"></div>
-            <div className="base" style={thumbPath ? {backgroundImage: `url(${thumbPath})`} : {}}></div>
+    return <a href={src} download onClick={playButtonSound}>
+        <div className="download-card">
+            <div className="d-btn"></div>
+            <div className="d-info">
+                <div className="d-display">{display}</div>
+                <div className="d-last-modified">{lastModified}</div>
+            </div>
         </div>
-        <div className="text">
-            <div className="title">{title}</div>
-            <div className="subtitle">{subtitle}</div>
-        </div>
-    </div>
+    </a>
+
 }
 
 export default DownloadCard;

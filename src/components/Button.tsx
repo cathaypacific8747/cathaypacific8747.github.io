@@ -19,10 +19,10 @@ const Button: React.FC<ButtonSettings> = ({ text, goto=null, disabled=false }) =
     }
 
     return <div className={`btn${disabled ? ' disabled' : ''}`} onClick={handleClick}>
-        <div className="text">{text}</div>
-        <div className="bg">
-            <div className="left"></div>
-            <div className="right"></div>
+        <div className="b-text">{text}</div>
+        <div className="b-bg">
+            <div className="b-left"></div>
+            <div className="b-right"></div>
         </div>
     </div>
 }

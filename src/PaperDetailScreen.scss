@@ -40,7 +40,8 @@ div.paper-detail-screen {
             @apply flex flex-row justify-start p-3;
 
             > .pane-1 {
-                @apply h-full w-9/12 p-3 mr-3;
+                @apply h-full p-3 mr-3 overflow-y-scroll;
+                width: calc(100% - 320px - 0.75rem);
 
                 > .abstract, >.information {
                     @apply mb-2;
@@ -48,7 +49,8 @@ div.paper-detail-screen {
             }
 
             > .pane-2 {
-                @apply h-full w-3/12 p-3;
+                @apply h-full p-3 overflow-y-scroll;
+                width: 320px;
             }
         }
     }
@@ -58,7 +60,7 @@ div.paper-detail-screen {
 
         > div {
             @apply inline-block;
-            background: url('~/public/assets/gui/link.webp') no-repeat;
+            background: url('assets/link.webp') no-repeat;
             background-size: cover;
             image-rendering: pixelated;
         }

@@ -14,11 +14,6 @@ interface DownloadItem {
     src: string;
 }
 
-interface Downloads {
-    latest: DownloadItem[];
-    others: DownloadItem[];
-}
-
 interface PaperDetail {
     title: string;
     authors: Author[];
@@ -27,7 +22,7 @@ interface PaperDetail {
     doi?: string;
     abstract?: string;
     information: string;
-    downloads: Downloads;
+    downloads: DownloadItem[];
 }
 
 export { PaperDetail };

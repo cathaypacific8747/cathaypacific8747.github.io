@@ -12,7 +12,7 @@ const PaperSelectionScreen = () => {
     const selectionEl = useRef(null);
 
     useEffect(() => {
-        axios.get('/assets/gui/definitions/papers/index.json').then(({ data }) => {
+        axios.get('/definitions/papers/index.json').then(({ data }) => {
             setPapers(data)
         });
     }, []);

@@ -1,52 +1,37 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.card {
-    @apply text-white w-[540px] h-[72px] flex flex-row p-1;
-
-    > .thumb {
-        @apply bg-gray-600 w-[64px] h-[64px] flex-shrink-0 relative;
-
-        > div {
-            @apply h-full w-full absolute bg-contain;
-            image-rendering: pixelated;
-
-            &.hover {
-                z-index: 101;
-            }
-
-            &.base {
-                z-index: 100;
-            }
-        }
-    }
-
-    > .text {
-        @apply pl-1.5 -translate-y-0.5;
-
-        > div {
-            @apply whitespace-nowrap overflow-hidden overflow-ellipsis;
-            width: 464px;
-
-            &.subtitle {
-                @apply text-gray-400 -translate-y-0.5;
-            }
-        }
-    }
+div.download-card {
+    @apply w-full h-[56px] flex flex-row p-[4px] bg-teal-900 my-2;
 
     &:hover {
-        > .thumb > .hover {
-            background-image: url('~/public/assets/gui/card_select1.webp');
-        }
+        @apply bg-teal-700;
 
-        > .thumb:hover > .hover {
-            background-image: url('~/public/assets/gui/card_select2.webp');
+        > .d-btn {
+            @apply opacity-100;
         }
     }
 
-    &.selected {
-        box-shadow: inset 0 0 0 2px #ccc;
+    > .d-btn {
+        @apply w-[48px] h-full mr-[2px] opacity-75;
+        background: url('../assets/download.webp') no-repeat center/36px;
+        image-rendering: pixelated;
+    }
+
+    > .d-info {
+        @apply h-full ml-[2px] flex flex-col justify-center px-[2px];
+        width: calc(100% - 52px);
+
+        > .d-display {
+            @apply whitespace-nowrap overflow-hidden;
+        }
+
+        > .d-last-modified {
+            @apply text-gray-300;
+            font-size: 12px;
+        }
     }
 }
-

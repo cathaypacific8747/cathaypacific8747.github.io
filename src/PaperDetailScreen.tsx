@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { PaperDetail } from './paperDetail.d'
 import Button from './components/Button'
+import DownloadCard from './components/DownloadCard';
 import './PaperDetailScreen.scss'
 
 
@@ -16,7 +17,7 @@ const PaperDetailScreen = () => {
     const [paperDetail, setPaperDetail] = useState<PaperDetail | null | undefined>(undefined);
 
     useEffect(() => {
-        axios.get(`/assets/gui/definitions/papers/${paperid}.json`).then(({ data }) => {
+        axios.get(`/definitions/papers/${paperid}.json`).then(({ data }) => {
             setPaperDetail(data);
         }).catch(() => setPaperDetail(null));
         // handle error
@@ -46,16 +47,19 @@ const PaperDetailScreen = () => {
         </div>
         <div className="detail">
             <div className="pane-1">
-                <div className="heading">Abstract</div>
-                <div className="abstract">{paperDetail.abstract}</div>
+                {paperDetail.abstract && <>
+                    <div className="heading">Abstract</div>
+                    <div className="abstract">{paperDetail.abstract}</div>
+                </>}
                 {paperDetail.information && <>
                     <div className="heading pad">Information</div>
-                    {paperDetail.information.split('\n').map(line => <div className="information">{line}</div>)}
+                    {paperDetail.information.split('\n').map(line => <div className="information" key={line}>{line}</div>)}
                 </>}
             </div>
             <div className="pane-2">
                 <div className="heading">Downloads</div>
                 <div className="license">License: <Link display={paperDetail.license.name} url={paperDetail.license.url} small={false} /></div>
+                {paperDetail.downloads.map(d => <DownloadCard key={d.src} display={d.display} lastModified={d.lastModified} src={d.src} />)}
             </div>
         </div>
         <div className="footer">

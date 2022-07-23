@@ -37,11 +37,11 @@
 
     &:hover {
         > .thumb > .hover {
-            background-image: url('~/public/assets/gui/card_select1.webp');
+            background-image: url('../assets/card_select1.webp');
         }
 
         > .thumb:hover > .hover {
-            background-image: url('~/public/assets/gui/card_select2.webp');
+            background-image: url('../assets/card_select2.webp');
         }
     }
 
