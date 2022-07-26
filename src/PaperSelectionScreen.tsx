@@ -30,7 +30,26 @@ const PaperSelectionScreen = () => {
                 goto={`/papers/${p.id}`}
             />)}
         </div>
-        <Button text="Cancel" goto="/" />
+        <div className="ps-footer">
+            <Button
+                text="View Selected Paper"
+                goto={selectedPaperId || undefined}
+                disabled={selectedPaperId === null}
+            />
+            <div className="ps-footer1">
+                <Button
+                    text="Copy Link"
+                    half={true}
+                    disabled={selectedPaperId === null}
+                    handleClickAfter={() => {navigator.clipboard.writeText(`${window.location.href}/${selectedPaperId}`)}}
+                />
+                <Button
+                    text="Go Back"
+                    goto="/"
+                    half={true}
+                />
+            </div>
+        </div>
     </div>
 }
 

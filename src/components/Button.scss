@@ -2,10 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-    @apply my-1 relative w-[400px] h-10;
-	@media (max-width: 433px) {
+@mixin std-btn {
+	width: 400px;
+	@media (max-width: calc(400px * 13/12)) {
 		@apply w-11/12;
+	}
+}
+
+.btn {
+	/* by default, render a full-width button */
+    @apply relative my-1 h-10;
+	@include std-btn;
+
+	/* half-width button: assume that the parent div has a calculated width */
+	&.half {
+		width: 196px;
+		@media (max-width: 433px) {
+			width: calc((100% - 8px) / 2);
+		}
 	}
 
 	> .b-text {

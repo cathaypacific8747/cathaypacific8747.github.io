@@ -6,7 +6,7 @@ div.paper-detail-screen {
     @apply w-full h-full flex flex-col items-center justify-end bg-gray-800;
     
     > .header {
-        @apply flex flex-col justify-center text-center my-4;
+        @apply flex flex-col justify-center text-center my-4 px-1;
         min-height: 82px;
     }
 
@@ -16,7 +16,7 @@ div.paper-detail-screen {
     }
 
     > .footer {
-        @apply flex flex-col justify-center;
+        @apply w-full flex flex-col justify-center items-center;
         height: 16%;
     }
 
