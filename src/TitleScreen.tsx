@@ -3,8 +3,8 @@ import './TitleScreen.scss'
 
 const TitleScreen = () => {
     return <div className="title-screen">
-        <Button text="Projects" disabled={true} />
-        <Button text="Papers" goto="/papers" />
+        <Button text="Projects" goto="projects" />
+        <Button text="Papers" goto="papers" />
         <Button text="About Me" disabled={true} />
     </div>
 }

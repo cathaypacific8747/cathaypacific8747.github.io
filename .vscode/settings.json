@@ -1,5 +1,11 @@
 {
     "files.associations": {
-        "*.scss": "tailwindcss"
+        "*.scss": "postcss"
     },
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "on"
+    },
+    "svg.preview.background": "transparent"
 }

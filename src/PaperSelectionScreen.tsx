@@ -1,16 +1,23 @@
 import { useEffect, useState, useRef } from 'react'
 import axios from 'axios';
 
-import Paper from './paper.d';
 import Card from './components/Card'
 import Button from './components/Button'
 import './PaperSelectionScreen.scss'
+
+interface Paper {
+    id: string,
+    title: string,
+    description: string,
+    thumbPath?: string,
+}
 
 const PaperSelectionScreen = () => {
     const [papers, setPapers] = useState<Paper[]>([])
     const [selectedPaperId, setSelectedPaperId] = useState<string | null>(null);
     const selectionEl = useRef(null);
 
+    // TODO: handle network errors
     useEffect(() => {
         axios.get('/definitions/papers/index.json').then(({ data }) => {
             setPapers(data)
