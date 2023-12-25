@@ -1,0 +1,121 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
+import getSortedPapers from "@utils/getSortedPapers";
+import slugify from "@utils/slugify";
+
+const papers = await getCollection("papers");
+
+const sortedPapers = getSortedPapers(papers);
+const featuredPapers = sortedPapers.filter(({ data }) => data.featured);
+---
+
+<Layout>
+  <Header />
+  <main id="main-content">
+    <section id="hero">
+      <p>
+        I am a second-year undergraduate majoring in Aerospace Engineering
+        with an extended major in Artificial Intelligence, and a research
+        helper at the <LinkButton href="https://octadlab.ust.hk">HKUST OCTAD Lab.</LinkButton>
+      </p>
+      <p>
+        My research interests lie in the intersection of aerospace and machine learning,
+        with a particular focus on air traffic management and trajectory prediction.
+      </p>
+      <div class="social-wrapper">
+        <Socials />
+      </div>
+    </section>
+    <Hr />
+    {
+      featuredPapers.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured Papers</h2>
+            <ul>
+              {featuredPapers.map(({ data }) => (
+                <Card
+                  href={`/papers/${slugify(data)}`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    <section id="recent-papers">
+      <h2>Recent Papers</h2>
+      <ul>
+        {
+          sortedPapers
+            .filter(({ data }) => !data.featured)
+            .map(
+              ({ data }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/papers/${slugify(data)}`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )
+        }
+      </ul>
+      <div class="all-papers-btn-wrapper">
+        <LinkButton href="/papers">
+          All Papers
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pb-6 pt-8;
+  }
+  #hero h1 {
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+  }
+
+  /* ===== Featured & Recent Papers Sections ===== */
+  #featured,
+  #recent-papers {
+    @apply pb-6 pt-12;
+  }
+  #featured h2,
+  #recent-papers h2 {
+    @apply text-2xl font-semibold tracking-wide;
+  }
+  .all-papers-btn-wrapper {
+    @apply my-8 text-center;
+  }
+</style>

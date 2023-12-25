@@ -1,0 +1,58 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Papers from "@layouts/Papers.astro";
+import PaperDetails from "@layouts/PaperDetails.astro";
+import getSortedPapers from "@utils/getSortedPapers";
+import getPageNumbers from "@utils/getPageNumbers";
+import slugify from "@utils/slugify";
+import { SITE } from "@config";
+
+export interface Props {
+  paper: CollectionEntry<"papers">;
+}
+
+export async function getStaticPaths() {
+  const papers = await getCollection("papers", ({ data }) => !data.draft);
+
+  const postResult = papers.map(paper => ({
+    params: { slug: slugify(paper.data) },
+    props: { paper },
+  }));
+
+  const pagePaths = getPageNumbers(papers.length).map(pageNum => ({
+    params: { slug: String(pageNum) },
+  }));
+
+  return [...postResult, ...pagePaths];
+}
+
+const { slug } = Astro.params;
+const { paper } = Astro.props;
+
+const papers = await getCollection("papers");
+
+const sortedPapers = getSortedPapers(papers);
+
+const totalPages = getPageNumbers(sortedPapers.length);
+
+const currentPage =
+  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
+    ? Number(slug)
+    : 0;
+const lastPaper = currentPage * SITE.papersPerPage;
+const startPaper = lastPaper - SITE.papersPerPage;
+
+const paginatedPapers = sortedPapers.slice(startPaper, lastPaper);
+---
+
+{
+  paper ? (
+    <PaperDetails paper={paper} />
+  ) : (
+    <Papers
+      papers={paginatedPapers}
+      pageNum={currentPage}
+      totalPages={totalPages.length}
+    />
+  )
+}

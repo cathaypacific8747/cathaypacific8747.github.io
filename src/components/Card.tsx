@@ -1,37 +1,35 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { slugifyStr } from "@utils/slugify";
+import Datetime from "./Datetime";
+import type { CollectionEntry } from "astro:content";
 
-import { ActionContext } from '../App'
-import './Card.scss'
-
-interface CardSettings {
-    title: string,
-    subtitle: string,
-    thumbPath?: string,
-    selected: boolean
-    dispatchSelected: (() => void),
-    goto: string,
+export interface Props {
+  href?: string;
+  frontmatter: CollectionEntry<"papers">["data"];
+  secHeading?: boolean;
 }
 
-const Card: React.FC<CardSettings> = ({ title, subtitle, thumbPath=null, selected, dispatchSelected, goto }) => {
-    const { playButtonSound } = useContext(ActionContext)
-    let navigate = useNavigate();
+export default function Card({ href, frontmatter, secHeading = true }: Props) {
+  const { title, pubDatetime, description } = frontmatter;
 
-    const handleNavigate = () => {
-        playButtonSound();
-        navigate(goto)
-    }
+  const headerProps = {
+    style: { viewTransitionName: slugifyStr(title) },
+    className: "text-lg font-medium decoration-dashed hover:underline",
+  };
 
-    return <div className={`card${selected ? ' selected' : ''}`} onClick={dispatchSelected} onDoubleClick={handleNavigate}>
-        <div className="thumb" onClick={handleNavigate}>
-            <div className="hover"></div>
-            <div className="base" style={thumbPath ? {backgroundImage: `url(${thumbPath})`} : {}}></div>
-        </div>
-        <div className="text">
-            <div className="title">{title}</div>
-            <div className="subtitle">{subtitle}</div>
-        </div>
-    </div>
+  return (
+    <li className="my-6">
+      <a
+        href={href}
+        className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+      >
+        {secHeading ? (
+          <h2 {...headerProps}>{title}</h2>
+        ) : (
+          <h3 {...headerProps}>{title}</h3>
+        )}
+      </a>
+      <Datetime datetime={pubDatetime} />
+      <p>{description}</p>
+    </li>
+  );
 }
-
-export default Card;
