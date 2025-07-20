@@ -4,7 +4,6 @@ export type Site = {
   desc: string;
   title: string;
   lightAndDarkMode: boolean;
-  papersPerPage: number;
 };
 
 export type SocialObjects = {

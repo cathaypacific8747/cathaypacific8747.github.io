@@ -4,16 +4,13 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
-import Hr from "@components/Hr.astro";
-import Card from "@components/Card.astro";
+import DateItem from "@components/DateItem.astro";
 import Socials from "@components/Socials.astro";
-import getSortedPapers from "@utils/getSortedPapers";
-import slugify from "@utils/slugify";
+import { slugify, getSortedPapers } from "utils.ts";
+import { PROJECTS } from "@config";
 
 const papers = await getCollection("papers");
-
 const sortedPapers = getSortedPapers(papers);
-const featuredPapers = sortedPapers.filter(({ data }) => data.featured);
 ---
 
 <Layout>
@@ -21,7 +18,7 @@ const featuredPapers = sortedPapers.filter(({ data }) => data.featured);
   <main id="main-content">
     <section id="hero">
       <p>
-        I am a second-year undergraduate majoring in Aerospace Engineering with
+        I am a third-year undergraduate majoring in Aerospace Engineering with
         an extended major in Artificial Intelligence, and a research helper at
         the <LinkButton href="https://octadlab.ust.hk">
           HKUST OCTAD Lab.
@@ -36,89 +33,60 @@ const featuredPapers = sortedPapers.filter(({ data }) => data.featured);
         <Socials />
       </div>
     </section>
-    <Hr />
-    {
-      featuredPapers.length > 0 && (
-        <>
-          <section id="featured">
-            <h2>Featured Papers</h2>
-            <ul>
-              {featuredPapers.map(({ data }) => (
-                <Card
-                  href={`/papers/${slugify(data)}`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
-              ))}
-            </ul>
-          </section>
-          <Hr />
-        </>
-      )
-    }
-
-    <section id="recent-papers">
-      <h2>Recent Papers</h2>
-      <ul>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="list-container">
         {
-          sortedPapers
-            .filter(({ data }) => !data.featured)
-            .map(
-              ({ data }, index) =>
-                index < 4 && (
-                  <Card
-                    href={`/papers/${slugify(data)}`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
-                )
-            )
+          PROJECTS.map(project => (
+            <DateItem
+              href={project.href}
+              date={project.date}
+              title={project.title}
+              description={project.description}
+            />
+          ))
         }
-      </ul>
-      <div class="all-papers-btn-wrapper">
-        <LinkButton href="/papers">
-          All Papers
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
+      </div>
+    </section>
+    <section id="papers">
+      <h2>Papers</h2>
+      <div class="list-container">
+        {
+          sortedPapers.map(({ data }) => (
+            <DateItem
+              href={`/papers/${slugify(data)}`}
+              date={data.pubDatetime}
+              title={data.title}
+              description={data.description}
+            />
+          ))
+        }
       </div>
     </section>
   </main>
 
   <Footer />
 </Layout>
-
-<style>
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pb-6 pt-8;
-  }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-  #hero p {
-    @apply my-2;
-  }
+<style lang="scss">
   .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+    margin-top: 1rem;
+    display: flex;
   }
 
-  /* ===== Featured & Recent Papers Sections ===== */
-  #featured,
-  #recent-papers {
-    @apply pb-6 pt-12;
-  }
-  #featured h2,
-  #recent-papers h2 {
-    @apply text-2xl font-semibold tracking-wide;
-  }
-  .all-papers-btn-wrapper {
-    @apply my-8 text-center;
+  #projects,
+  #papers {
+    padding: 3rem 0 1.5rem;
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      margin-bottom: 1rem;
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
   }
 </style>

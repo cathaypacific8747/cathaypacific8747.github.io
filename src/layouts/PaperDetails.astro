@@ -2,9 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import Datetime from "@components/Datetime.astro";
 import type { CollectionEntry } from "astro:content";
-import { slugifyStr } from "@utils/slugify";
 
 export interface Props {
   paper: CollectionEntry<"papers">;
@@ -13,6 +11,10 @@ export interface Props {
 const { paper } = Astro.props;
 
 const { title, author, description, canonicalURL, pubDatetime } = paper.data;
+const dateStr =
+  pubDatetime instanceof Date
+    ? pubDatetime.toISOString().split("T")[0]
+    : pubDatetime;
 
 const { Content } = await paper.render();
 ---
@@ -24,56 +26,24 @@ const { Content } = await paper.render();
   canonicalURL={canonicalURL}
 >
   <Header />
-  <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
-    <button
-      class="focus-outline mb-2 mt-8 flex hover:opacity-75"
-      onclick="history.back()"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg"
-        ><path
-          d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-        ></path>
-      </svg><span>Go back</span>
-    </button>
-  </div>
   <main id="main-content">
-    <h1 transition:name={slugifyStr(title)} class="paper-title">{title}</h1>
-    <Datetime datetime={pubDatetime} size="lg" className="my-2" />
-    <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
+    <h1 class="paper-title">{title}</h1>
+    <div class="meta-info">{dateStr}</div>
+    <article id="article" class="prose">
       <Content />
     </article>
-
-    <div class="flex justify-end">
-      <button
-        id="back-to-top"
-        class="focus-outline whitespace-nowrap hover:opacity-75"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="rotate-90">
-          <path
-            d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-          ></path>
-        </svg>
-        <span>Back to Top</span>
-      </button>
-    </div>
   </main>
   <Footer />
 </Layout>
 
-<style>
-  main {
-    @apply mx-auto w-full max-w-3xl px-4 pb-12;
-  }
+<style lang="scss">
   .paper-title {
-    @apply text-2xl font-semibold text-skin-accent;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(var(--color-accent));
+  }
+  .meta-info {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
   }
 </style>
-
-<script is:inline>
-  /* When the user clicks on the "Back to Top" button,
-   * scroll to the top of the document */
-  document.querySelector("#back-to-top")?.addEventListener("click", () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  });
-</script>

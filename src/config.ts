@@ -6,20 +6,29 @@ export const SITE: Site = {
   desc: "My homepage.",
   title: "Abraham Cheung",
   lightAndDarkMode: true,
-  papersPerPage: 5,
 };
 
-export const LOCALE = {
-  lang: "en",
-  langTag: ["en-EN"],
-} as const;
-
-export const LOGO_IMAGE = {
-  enable: false,
-  svg: true,
-  width: 216,
-  height: 46,
-};
+export const PROJECTS: {
+  date: string;
+  title: string;
+  description: string;
+  href?: string;
+}[] = [
+  {
+    date: "2023",
+    title: "fr24",
+    description:
+      "Download and parse data from flightradar24.com with gRPC/JSON.",
+    href: "https://github.com/cathaypacific8747/fr24",
+  },
+  {
+    date: "2021",
+    title: "am4",
+    description:
+      "Discord bot and various utilities for the game Airline Manager 4.",
+    href: "https://github.com/cathaypacific8747/am4",
+  },
+];
 
 export const SOCIALS: SocialObjects = [
   {
@@ -37,7 +46,7 @@ export const SOCIALS: SocialObjects = [
   {
     name: "Mail",
     href: "mailto:abrahamcheung8747@gmail.com",
-    linkTitle: `${SITE.title} on Mail`,
+    linkTitle: `${SITE.title} via Mail`,
     active: true,
   },
 ];

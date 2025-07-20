@@ -9,7 +9,6 @@ const papers = defineCollection({
     title: z.string(),
     postSlug: z.string().optional(),
     featured: z.boolean().optional(),
-    draft: z.boolean().optional(),
     description: z.string(),
     canonicalURL: z.string().optional(),
   }),

@@ -1,6 +1,6 @@
 ---
 title: What is the relationship between the wrap angle of a capstan and the loading force?
-description: IB Physics Internal Assessment (Practice)
+description: IB Physics IA (Practice)
 pubDatetime: 2021-02-24T00:00:00
 ---
 

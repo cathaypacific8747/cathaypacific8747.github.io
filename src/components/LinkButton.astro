@@ -1,19 +1,25 @@
 ---
 export interface Props {
   href: string;
-  className?: string;
+  class?: string;
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
 }
 
-const { href, className, ariaLabel, title, disabled = false } = Astro.props;
+const {
+  href,
+  class: className,
+  ariaLabel,
+  title,
+  disabled = false,
+} = Astro.props;
 ---
 
 <a
   href={disabled ? "#" : href}
   tabindex={disabled ? "-1" : "0"}
-  class={`group inline-block ${className}`}
+  class={`link-button group ${className}`}
   aria-label={ariaLabel}
   title={title}
   aria-disabled={disabled}
@@ -21,8 +27,12 @@ const { href, className, ariaLabel, title, disabled = false } = Astro.props;
   <slot />
 </a>
 
-<style>
-  a {
-    @apply hover:text-skin-accent;
+<style lang="scss">
+  .link-button {
+    display: inline-block;
+
+    &:hover {
+      color: rgba(var(--color-accent));
+    }
   }
 </style>

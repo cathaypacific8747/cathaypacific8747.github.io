@@ -1,0 +1,59 @@
+---
+export interface Props {
+  href: string;
+  date: Date | string;
+  title: string;
+  description: string;
+}
+
+const { href, date, title, description } = Astro.props;
+const displayDate = date instanceof Date ? date.getFullYear() : date;
+---
+
+<div class="list-item">
+  <span class="date">{displayDate}</span>
+  <div class="content-col">
+    <h3 class="title"><a href={href}>{title}</a></h3>
+    <p class="description">{description}</p>
+  </div>
+</div>
+
+<style lang="scss">
+  .list-item {
+    position: relative;
+    transition: margin-left 0.2s ease-in-out;
+
+    .date {
+      position: absolute;
+      left: -4rem;
+      width: 3.2rem;
+      text-align: right;
+      top: 4px;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(var(--color-accent));
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-underline-offset: 4px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    &:hover .title {
+      text-decoration: none;
+    }
+
+    .description {
+      margin: 0.2rem 0 0 0;
+    }
+  }
+
+  @media (max-width: 852px) {
+    .list-item {
+      margin-left: 3.2rem;
+    }
+  }
+</style>

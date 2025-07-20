@@ -1,35 +1,34 @@
 ---
-import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
-
-export interface Props {
-  noMarginTop?: boolean;
-}
-
-const { noMarginTop = false } = Astro.props;
 ---
 
-<footer class={`${noMarginTop ? "" : "mt-auto"}`}>
-  <Hr noPadding />
+<footer class="mt-auto">
+  <hr />
   <div class="footer-wrapper">
     <Socials centered />
   </div>
 </footer>
 
-<style>
+<style lang="scss">
   footer {
-    @apply w-full;
+    width: 100%;
+    margin-top: auto;
+  }
+  hr {
+    border-color: rgba(var(--color-border));
   }
   .footer-wrapper {
-    @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
   }
-  .link-button {
-    @apply my-1 p-2 hover:rotate-6;
-  }
-  .link-button svg {
-    @apply scale-125;
-  }
-  .separator {
-    @apply hidden sm:inline;
+
+  @media (min-width: 640px) {
+    .footer-wrapper {
+      flex-direction: row-reverse;
+      padding: 1rem 0;
+    }
   }
 </style>

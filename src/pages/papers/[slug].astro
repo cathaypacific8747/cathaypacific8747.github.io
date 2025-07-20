@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import PaperDetails from "@layouts/PaperDetails.astro";
-import slugify from "@utils/slugify";
+import { slugify } from "utils.ts";
 
 export async function getStaticPaths() {
-  const papers = await getCollection("papers", ({ data }) => !data.draft);
+  const papers = await getCollection("papers");
 
   return papers.map(paper => ({
     params: { slug: slugify(paper.data) },
