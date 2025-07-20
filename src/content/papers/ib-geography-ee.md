@@ -15,7 +15,7 @@ This paper was submitted as the Geography Extended Essay for the May 2022 Intern
 
 Marks achieved: 35/35
 
-Code is available [here](https://github.com/cathaypacific8747/geo-ee).
+Code is available [here](https://github.com/cathaypacific8747/ibo).
 
 # Downloads
 

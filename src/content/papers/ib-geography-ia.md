@@ -14,7 +14,7 @@ This paper was submitted as the Internal Assessment for the May 2022 Internation
 
 Marks achieved: 25/25
 
-Code is available [here](https://github.com/cathaypacific8747/geo-ia).
+Code is available [here](https://github.com/cathaypacific8747/ibo).
 
 # Downloads
 

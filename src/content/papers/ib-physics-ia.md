@@ -14,8 +14,9 @@ This paper was submitted as the Internal Assessment for the May 2022 Internation
 
 Marks achieved: 23/24
 
-Code is available [here](https://github.com/cathaypacific8747/phy-ia).
-CKY Students: you can find the 2D heatmap generator [here](https://github.com/cathaypacific8747/physics-ia-tools).
+Code is available [here](https://github.com/cathaypacific8747/ibo).
+
+CKY Students: you can find the 2D heatmap generator [here](https://github.com/cathaypacific8747/ibo).
 
 # Downloads
 
