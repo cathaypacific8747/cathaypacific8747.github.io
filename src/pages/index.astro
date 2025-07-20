@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
+import Card from "@components/Card.astro";
 import Socials from "@components/Socials.astro";
 import getSortedPapers from "@utils/getSortedPapers";
 import slugify from "@utils/slugify";
@@ -21,13 +21,16 @@ const featuredPapers = sortedPapers.filter(({ data }) => data.featured);
   <main id="main-content">
     <section id="hero">
       <p>
-        I am a second-year undergraduate majoring in Aerospace Engineering
-        with an extended major in Artificial Intelligence, and a research
-        helper at the <LinkButton href="https://octadlab.ust.hk">HKUST OCTAD Lab.</LinkButton>
+        I am a second-year undergraduate majoring in Aerospace Engineering with
+        an extended major in Artificial Intelligence, and a research helper at
+        the <LinkButton href="https://octadlab.ust.hk">
+          HKUST OCTAD Lab.
+        </LinkButton>
       </p>
       <p>
-        My research interests lie in the intersection of aerospace and machine learning,
-        with a particular focus on air traffic management and trajectory prediction.
+        My research interests lie in the intersection of aerospace and machine
+        learning, with a particular focus on air traffic management and
+        trajectory prediction.
       </p>
       <div class="social-wrapper">
         <Socials />

@@ -1,0 +1,22 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import PaperDetails from "@layouts/PaperDetails.astro";
+import slugify from "@utils/slugify";
+
+export async function getStaticPaths() {
+  const papers = await getCollection("papers", ({ data }) => !data.draft);
+
+  return papers.map(paper => ({
+    params: { slug: slugify(paper.data) },
+    props: { paper },
+  }));
+}
+
+export interface Props {
+  paper: CollectionEntry<"papers">;
+}
+
+const { paper } = Astro.props;
+---
+
+<PaperDetails paper={paper} />

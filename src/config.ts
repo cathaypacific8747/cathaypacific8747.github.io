@@ -10,8 +10,8 @@ export const SITE: Site = {
 };
 
 export const LOCALE = {
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+  lang: "en",
+  langTag: ["en-EN"],
 } as const;
 
 export const LOGO_IMAGE = {
@@ -32,6 +32,12 @@ export const SOCIALS: SocialObjects = [
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/abraham-c-6666bb10a/",
     linkTitle: `${SITE.title} on LinkedIn`,
+    active: true,
+  },
+  {
+    name: "Mail",
+    href: "mailto:abrahamcheung8747@gmail.com",
+    linkTitle: `${SITE.title} on Mail`,
     active: true,
   },
 ];

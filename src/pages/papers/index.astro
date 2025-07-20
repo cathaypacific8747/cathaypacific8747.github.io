@@ -1,18 +1,10 @@
 ---
-import { SITE } from "@config";
+import { getCollection } from "astro:content";
 import Papers from "@layouts/Papers.astro";
 import getSortedPapers from "@utils/getSortedPapers";
-import getPageNumbers from "@utils/getPageNumbers";
 
-import { getCollection } from "astro:content";
-
-const papers = await getCollection("papers");
-
+const papers = await getCollection("papers", ({ data }) => !data.draft);
 const sortedPapers = getSortedPapers(papers);
-
-const totalPages = getPageNumbers(sortedPapers.length);
-
-const paginatedPapers = sortedPapers.slice(0, SITE.papersPerPage);
 ---
 
-<Papers papers={paginatedPapers} pageNum={1} totalPages={totalPages.length} />
+<Papers papers={sortedPapers} />
